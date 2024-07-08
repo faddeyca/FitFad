@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitFad.Desktop", "FitFad.Desktop\FitFad.Desktop.csproj", "{42F12A16-ECF7-44DD-B1CF-47EDE6DA81F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFad.Desktop", "FitFad.Desktop\FitFad.Desktop.csproj", "{42F12A16-ECF7-44DD-B1CF-47EDE6DA81F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitFad.Application", "FitFad.Application\FitFad.Application.csproj", "{88ECE2B6-A695-4941-868F-A363E6CB5FE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFad.Application", "FitFad.Application\FitFad.Application.csproj", "{88ECE2B6-A695-4941-868F-A363E6CB5FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitFad.Domain", "FitFad.Domain\FitFad.Domain.csproj", "{DAB89AA9-4ACC-4B18-9572-DCC33F3E4E54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFad.Domain", "FitFad.Domain\FitFad.Domain.csproj", "{DAB89AA9-4ACC-4B18-9572-DCC33F3E4E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitFad.Infrastructure", "FitFad.Infrastructure\FitFad.Infrastructure.csproj", "{F19E20AC-4EA3-414F-96B9-665672FE808F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFad.Infrastructure", "FitFad.Infrastructure\FitFad.Infrastructure.csproj", "{F19E20AC-4EA3-414F-96B9-665672FE808F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C4013C61-2FE2-473E-AD6A-7F2640BFF86B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitFad.Application.Tests", "FitFad.Application.Tests\FitFad.Application.Tests.csproj", "{9D5491B2-4521-4AD6-9F39-29341B08D8ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFad.Application.Tests", "FitFad.Application.Tests\FitFad.Application.Tests.csproj", "{9D5491B2-4521-4AD6-9F39-29341B08D8ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitFad.Domain.Tests", "FitFad.Domain.Tests\FitFad.Domain.Tests.csproj", "{043C3740-1D68-4CBC-945E-4AAE60C16524}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFad.Domain.Tests", "FitFad.Domain.Tests\FitFad.Domain.Tests.csproj", "{043C3740-1D68-4CBC-945E-4AAE60C16524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitFad.Infrastructure.Tests", "FitFad.Infrastructure.Tests\FitFad.Infrastructure.Tests.csproj", "{70270CFF-2F6E-48E2-A7A8-9F797DD035D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitFad.Infrastructure.Tests", "FitFad.Infrastructure.Tests\FitFad.Infrastructure.Tests.csproj", "{70270CFF-2F6E-48E2-A7A8-9F797DD035D7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{220B6947-64CD-4DE9-AEA2-5C1C4D22C44B}"
 EndProject
