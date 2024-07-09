@@ -52,6 +52,11 @@ namespace FitFad.Domain.Values
                         return false;
                     }
 
+                    if (thisValue is IEnumerable<object> sequence1
+                        && otherValue is IEnumerable<object> sequence2)
+                    {
+                        return sequence1.SequenceEqual(sequence2);
+                    }
                     return thisValue.Equals(otherValue);
                 });
         }
@@ -63,15 +68,37 @@ namespace FitFad.Domain.Values
 
         public override int GetHashCode()
         {
-            var hash = new HashCode();
-
-            hash.Add(GetType()
+            var properties = GetType()
                 .GetProperties()
                 .Where(p => p.CanRead)
-                .Select(p => p.GetValue(this)));
+                .OrderBy(p => p.Name)
+                .Select(p => p.GetValue(this))
+                .Where(value => value != null);
 
-            return hash.ToHashCode();
+            var hash = 0;
+            foreach (var property in properties)
+            {
+                if (property is null)
+                {
+                    continue;
+                }
+                if (property is IEnumerable<object> sequence && property is not string)
+                {
+                    var subHash = 0;
+                    foreach (var element in sequence)
+                    {
+                        subHash = HashCode.Combine(subHash, element?.GetHashCode() ?? 0);
+                    }
+                }
+                else
+                {
+                    hash = HashCode.Combine(hash, property.GetHashCode());
+                }
+            }
+
+            return hash;
         }
+
 
         public static bool operator ==(AbstractValue<T>? a, AbstractValue<T>? b) => a?.Equals(b) ?? b is null;
 

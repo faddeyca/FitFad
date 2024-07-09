@@ -1,4 +1,4 @@
-namespace FitFad.Domain.Tests
+namespace FitFad.Application.Tests
 {
     public class Tests
     {
@@ -10,7 +10,8 @@ namespace FitFad.Domain.Tests
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+
+
         }
     }
 }
