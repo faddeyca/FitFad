@@ -10,7 +10,7 @@ namespace FitFad.Infrastructure.Tests
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+
         }
     }
 }

@@ -1,12 +1,17 @@
 ﻿using FitFad.Domain.Entities.Person;
+using FitFad.Domain.Enums;
+using FitFad.Domain.Exceptions;
+using FitFad.Domain.Services;
 
-namespace FitFad.Domain.Entities
+namespace FitFad.Domain.Entities.Finances
 {
-    public class Class : AbstractEntity<Class>
+    public class Membership : AbstractEntity<Membership>
     {
-        public string? Name { get; private set; }
-        public List<Trainer> Trainer { get; private set; } = [];
         public List<Client> Clients { get; private set; } = [];
+        public readonly MembershipType MembershipType;
+
+        public int MaxClients => MembershipTypeService.GetMaxClients(MembershipType);
+        public decimal Price => MembershipTypeService.GetPrice(MembershipType);
 
         private DateTime _startTime;
         private DateTime _endTime;
@@ -37,39 +42,29 @@ namespace FitFad.Domain.Entities
             }
         }
 
-        public TimeSpan Duration => EndTime - StartTime;
+        public Client? PrimaryClient => Clients.FirstOrDefault();
 
-        public Class(string? name, DateTime startTime, DateTime endTime)
+        public Membership(MembershipType membershipType, DateTime startTime, DateTime endTime)
         {
             if (startTime >= endTime)
             {
                 throw new ArgumentException("Start time must be before end time.");
             }
-            Name = name;
+            MembershipType = membershipType;
             _startTime = startTime;
             _endTime = endTime;
         }
 
-        public void RegisterTrainer(Trainer trainer)
+        public void AddClient(Client client)
         {
-            Trainer.Add(trainer);
-            trainer.RegisterToClass(this);
-        }
-
-        public bool RemoveTrainer(Trainer trainer)
-        {
-            return Trainer.Remove(trainer) & trainer.RemoveFromClass(this);
-        }
-
-        public void RegisterClient(Client client)
-        {
-            client.RegisterToClass(this);
+            if (Clients.Count >= MaxClients)
+            {
+                throw new MaximumNumberOfClientsReached(MaxClients);
+            }
             Clients.Add(client);
+            client.AddMembership(this);
         }
 
-        public bool RemoveClient(Client client)
-        {
-            return Clients.Remove(client) & client.RemoveFromClass(this);
-        }
+        public bool RemoveClient(Client client) => Clients.Remove(client) & client.RemoveMembership(this);
     }
 }

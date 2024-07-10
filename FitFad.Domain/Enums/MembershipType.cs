@@ -2,7 +2,12 @@
 {
     public enum MembershipType
     {
-        Monthly,
-        Yearly
+        Adult,
+        Child,
+        Senior,
+        Student,
+        Family,
+        Couple,
+        Corporate
     }
 }

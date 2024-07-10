@@ -1,6 +1,6 @@
 using FitFad.Domain.Values;
 
-namespace FitFad.Domain.Tests
+namespace FitFad.Domain.Tests.Values
 {
     [TestFixture]
     public class AddressTests
@@ -48,56 +48,77 @@ namespace FitFad.Domain.Tests
         {
             var modifiedAddress = _address1.WithStreetNumber("2");
 
-            Assert.That(_address1, Is.EqualTo(_address2));
-            Assert.That(modifiedAddress, Is.Not.EqualTo(_address1));
+            Assert.Multiple(() =>
+            {
+                Assert.That(_address1, Is.EqualTo(_address2));
+                Assert.That(modifiedAddress, Is.Not.EqualTo(_address1));
+            });
         }
 
         [Test]
         public void Address_WithModifiedStreetNumber_ShouldReturnNewInstance()
         {
             var modifiedAddress = _address1.WithStreetNumber("2");
-            Assert.That(modifiedAddress.StreetNumber, Is.EqualTo("2"));
-            Assert.That(modifiedAddress.StreetName, Is.EqualTo(_address1.StreetName));
+            Assert.Multiple(() =>
+            {
+                Assert.That(modifiedAddress.StreetNumber, Is.EqualTo("2"));
+                Assert.That(modifiedAddress.StreetName, Is.EqualTo(_address1.StreetName));
+            });
         }
 
         [Test]
         public void Address_WithModifiedStreetName_ShouldReturnNewInstance()
         {
             var modifiedAddress = _address1.WithStreetName("New Street");
-            Assert.That(modifiedAddress.StreetName, Is.EqualTo("New Street"));
-            Assert.That(modifiedAddress.StreetNumber, Is.EqualTo(_address1.StreetNumber));
+            Assert.Multiple(() =>
+            {
+                Assert.That(modifiedAddress.StreetName, Is.EqualTo("New Street"));
+                Assert.That(modifiedAddress.StreetNumber, Is.EqualTo(_address1.StreetNumber));
+            });
         }
 
         [Test]
         public void Address_WithModifiedCity_ShouldReturnNewInstance()
         {
             var modifiedAddress = _address1.WithCity("Hamilton");
-            Assert.That(modifiedAddress.City, Is.EqualTo("Hamilton"));
-            Assert.That(modifiedAddress.Suburb, Is.EqualTo(_address1.Suburb));
+            Assert.Multiple(() =>
+            {
+                Assert.That(modifiedAddress.City, Is.EqualTo("Hamilton"));
+                Assert.That(modifiedAddress.Suburb, Is.EqualTo(_address1.Suburb));
+            });
         }
 
         [Test]
         public void Address_WithModifiedSuburb_ShouldReturnNewInstance()
         {
             var modifiedAddress = _address1.WithSuburb("Ponsonby");
-            Assert.That(modifiedAddress.Suburb, Is.EqualTo("Ponsonby"));
-            Assert.That(modifiedAddress.City, Is.EqualTo(_address1.City));
+            Assert.Multiple(() =>
+            {
+                Assert.That(modifiedAddress.Suburb, Is.EqualTo("Ponsonby"));
+                Assert.That(modifiedAddress.City, Is.EqualTo(_address1.City));
+            });
         }
 
         [Test]
         public void Address_WithModifiedPostalCode_ShouldReturnNewInstance()
         {
             var modifiedAddress = _address1.WithPostalCode("1021");
-            Assert.That(modifiedAddress.PostalCode, Is.EqualTo("1021"));
-            Assert.That(modifiedAddress.Country, Is.EqualTo(_address1.Country));
+            Assert.Multiple(() =>
+            {
+                Assert.That(modifiedAddress.PostalCode, Is.EqualTo("1021"));
+                Assert.That(modifiedAddress.Country, Is.EqualTo(_address1.Country));
+            });
         }
 
         [Test]
         public void Address_WithModifiedCountry_ShouldReturnNewInstance()
         {
             var modifiedAddress = _address1.WithCountry("Australia");
-            Assert.That(modifiedAddress.Country, Is.EqualTo("Australia"));
-            Assert.That(modifiedAddress.PostalCode, Is.EqualTo(_address1.PostalCode));
+            Assert.Multiple(() =>
+            {
+                Assert.That(modifiedAddress.Country, Is.EqualTo("Australia"));
+                Assert.That(modifiedAddress.PostalCode, Is.EqualTo(_address1.PostalCode));
+            });
         }
 
         [Test]
@@ -123,12 +144,15 @@ namespace FitFad.Domain.Tests
         public void Address_WithAllNullFields_ShouldBehaveCorrectly()
         {
             var nullAddress = new Address(null, null, null, null, null, null);
-            Assert.That(nullAddress.StreetNumber, Is.Null);
-            Assert.That(nullAddress.StreetName, Is.Null);
-            Assert.That(nullAddress.City, Is.Null);
-            Assert.That(nullAddress.Suburb, Is.Null);
-            Assert.That(nullAddress.PostalCode, Is.Null);
-            Assert.That(nullAddress.Country, Is.Null);
+            Assert.Multiple(() =>
+            {
+                Assert.That(nullAddress.StreetNumber, Is.Null);
+                Assert.That(nullAddress.StreetName, Is.Null);
+                Assert.That(nullAddress.City, Is.Null);
+                Assert.That(nullAddress.Suburb, Is.Null);
+                Assert.That(nullAddress.PostalCode, Is.Null);
+                Assert.That(nullAddress.Country, Is.Null);
+            });
         }
 
         [Test]
