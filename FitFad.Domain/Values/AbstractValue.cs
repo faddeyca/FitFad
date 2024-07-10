@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 
 namespace FitFad.Domain.Values
 {
-    [Owned]
     public abstract class AbstractValue<T> : IEquatable<T>
         where T : AbstractValue<T>
     {

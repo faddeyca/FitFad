@@ -6,11 +6,11 @@ namespace FitFad.Domain.Entities.Person
     public class Client : Person<Client>
     {
         public List<Membership> Memberships { get; private set; } = [];
-        public readonly FinancialAccount Account;
+        public readonly FinancialAccount FinancialAccount;
 
         public Client()
         {
-            Account = new(this);
+            FinancialAccount = new(this);
         }
 
         public DateTime GetEarliestMembershipStart()

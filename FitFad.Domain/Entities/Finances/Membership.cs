@@ -16,6 +16,8 @@ namespace FitFad.Domain.Entities.Finances
         private DateTime _startTime;
         private DateTime _endTime;
 
+        public Membership() { }
+
         public DateTime StartTime
         {
             get => _startTime;

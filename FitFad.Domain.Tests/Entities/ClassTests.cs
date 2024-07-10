@@ -31,7 +31,7 @@ namespace FitFad.Domain.Tests.Entities
                 Assert.That(_class.Name, Is.EqualTo("Yoga Class"));
                 Assert.That(_class.StartTime, Is.LessThan(_class.EndTime));
                 Assert.That(_class.Duration, Is.EqualTo(_class.EndTime - _class.StartTime));
-                Assert.That(_class.Trainer, Is.Empty);
+                Assert.That(_class.Trainers, Is.Empty);
                 Assert.That(_class.Clients, Is.Empty);
             });
         }
@@ -41,7 +41,7 @@ namespace FitFad.Domain.Tests.Entities
         {
             _class.RegisterTrainer(_trainer);
 
-            Assert.That(_class.Trainer, Contains.Item(_trainer));
+            Assert.That(_class.Trainers, Contains.Item(_trainer));
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace FitFad.Domain.Tests.Entities
             Assert.Multiple(() =>
             {
                 Assert.That(result, Is.True);
-                Assert.That(_class.Trainer, Does.Not.Contain(_trainer));
+                Assert.That(_class.Trainers, Does.Not.Contain(_trainer));
             });
         }
 

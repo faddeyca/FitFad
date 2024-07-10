@@ -5,7 +5,7 @@ namespace FitFad.Domain.Entities
     public class Class : AbstractEntity<Class>
     {
         public string? Name { get; private set; }
-        public List<Trainer> Trainer { get; private set; } = [];
+        public List<Trainer> Trainers { get; private set; } = [];
         public List<Client> Clients { get; private set; } = [];
 
         private DateTime _startTime;
@@ -39,6 +39,8 @@ namespace FitFad.Domain.Entities
 
         public TimeSpan Duration => EndTime - StartTime;
 
+        public Class() { }
+
         public Class(string? name, DateTime startTime, DateTime endTime)
         {
             if (startTime >= endTime)
@@ -52,13 +54,13 @@ namespace FitFad.Domain.Entities
 
         public void RegisterTrainer(Trainer trainer)
         {
-            Trainer.Add(trainer);
+            Trainers.Add(trainer);
             trainer.RegisterToClass(this);
         }
 
         public bool RemoveTrainer(Trainer trainer)
         {
-            return Trainer.Remove(trainer) & trainer.RemoveFromClass(this);
+            return Trainers.Remove(trainer) & trainer.RemoveFromClass(this);
         }
 
         public void RegisterClient(Client client)

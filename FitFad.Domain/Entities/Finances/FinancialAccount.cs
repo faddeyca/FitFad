@@ -4,15 +4,26 @@ using FitFad.Domain.Values;
 
 namespace FitFad.Domain.Entities.Finances
 {
-    public class FinancialAccount(
-        Client client) : AbstractEntity<FinancialAccount>
+    public class FinancialAccount : AbstractEntity<FinancialAccount>
     {
-        public readonly Client Client = client;
+        public readonly Client Client;
+        public readonly Guid ClientId;
+
         private decimal _rawBalance = 0;
         public List<Transaction> Transactions { get; private set; } = [];
 
         public AccountEntryType AccountState => _rawBalance <= 0 ? AccountEntryType.Credit : AccountEntryType.Debit;
         public decimal Balance => Math.Abs(_rawBalance);
+
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public FinancialAccount() { }
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
+        public FinancialAccount(Client client)
+        {
+            ClientId = client.Id;
+            Client = client;
+        }
 
         public void TopUp(decimal amount, DateTime? time = null, string? notes = "Top up account")
         {

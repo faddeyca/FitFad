@@ -1,11 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace FitFad.Domain.Entities
+﻿namespace FitFad.Domain.Entities
 {
     public abstract class AbstractEntity<T>
         where T : AbstractEntity<T>
     {
-        [Key]
         public readonly Guid Id = Guid.NewGuid();
 
         public override bool Equals(object? obj)
